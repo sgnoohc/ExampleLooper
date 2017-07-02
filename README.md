@@ -115,7 +115,7 @@ The "job list" file for running the code in batch
 
 ## Homework
 
-Now plot the two histogram on a same TCanvas, one as a data point marker style, the other as a box histogram.
+Now plot the two histogram from 9. on a same TCanvas, one as a data point marker style, the other as a box histogram.
 See here for an example. (http://uaf-10.t2.ucsd.edu/~phchang/analysis/www/studies/chargeflip/plots/mee_os.png)
 
 ## 24h rule.
