@@ -39,6 +39,14 @@ The "job list" file for running the code in batch
 
 ## How to run the code
 
+0. Check out this code on UAF
+
+```
+    # login to UAF
+    git clone https://github.com/sgnoohc/ExampleLooper.git Looper
+    cd Looper
+```
+
 1. First setup the environment
 
 ```
