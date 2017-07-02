@@ -41,35 +41,47 @@ The "job list" file for running the code in batch
 
 1. First setup the environment
 
+```
     source setup.sh
+```
 
 2. Clean and then compile the code
 
+```
     ./clean.sh
     ./compile.sh
+```
 
 3. Then, run a job on one of the monte carlo root file
 
+```
     ./run.sh /hadoop/cms/store/group/snt/run2_moriond17/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v2/V08-00-16/merged_ntuple_9.root     DYJetsToLL_M_50_TuneCUETP8M1_13TeV_madgraphMLM_pythia8_RunIISummer16MiniAODv2_PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1_v2_V08_00_16_merged_ntuple_9.root &> log/DYJetsToLL_M_50_TuneCUETP8M1_13TeV_madgraphMLM_pythia8_RunIISummer16MiniAODv2_PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1_v2_V08_00_16_merged_ntuple_9.log
+```
 
 4. Observe that the output is located here:
 
+```
     ls output/DYJetsToLL_M_50_TuneCUETP8M1_13TeV_madgraphMLM_pythia8_RunIISummer16MiniAODv2_PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1_v2_V08_00_16_merged_ntuple_9.root
+```
 
 5. Create a pdf file of the histogram.
 
+```
     root -l output/DYJetsToLL_M_50_TuneCUETP8M1_13TeV_madgraphMLM_pythia8_RunIISummer16MiniAODv2_PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1_v2_V08_00_16_merged_ntuple_9.root
     root [0] hist_dilepton_mass->SaveAs("hist.pdf");
     root [1] .q
+```
 
 6. scp over to your ```~/public_html/``` and open up the file in web browser.
 
+```
     mkdir -p ~/public_html/
     cp hist.pdf ~/public_html/
 
     # Go to your web browser and open (NOTE: REPLACE phchang with your username. I suppose it's grmercad?)
     uaf-7.t2.ucsd.edu/~phchang/hist.pdf
     uaf-7.t2.ucsd.edu/~grmercad/hist.pdf
+```
 
 7. Now just for an example, let's run over several files now. We are not
    running over properly on all data or all MC events. So the weighting is sort
@@ -77,15 +89,19 @@ The "job list" file for running the code in batch
    am giving you just about ~20 root files (instead of many thousands) as an
    illustration of how things will scale up.
 
+```
     ./run_batch.sh
     # wait a while until the linux command line prompts up. This will take a bit.
+```
 
 8. Combining invidivual outputs into one file each for data, and Z boson MC events.
    (FYI, "Drell-Yan" (DY or dy) is single on or off-shell Z boson physics process.)
    (https://en.wikipedia.org/wiki/Drell%E2%80%93Yan_process)
 
+```
     hadd -f output/data.root output/Run*root
     hadd -f output/dy.root output/DY*root
+```
 
 9. Follow same step as 5. to create two different pdf files one for data one for Drell-Yan.
 
